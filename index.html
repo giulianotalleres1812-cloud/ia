@@ -527,9 +527,12 @@ function playMusic() {
     'https://m.youtube.com/watch?v=xMaE6toi4mk',
     'https://youtu.be/j5rGm3kdTuk'
   ];
+  
+  let lastSong = parseInt(localStorage.getItem('lastSong') ?? '-1');
   lastSong = (lastSong + 1) % songs.length;
-  const url = songs[lastSong];
-  window.location.href = url;
+  localStorage.setItem('lastSong', lastSong);
+  
+  window.location.href = songs[lastSong];
 }
 
 function hideMsg() {
