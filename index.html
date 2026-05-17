@@ -513,8 +513,11 @@ function speak(text) {
 }
 
 function playMusic() {
-  // Open YouTube search for the song
-  const url = 'https://m.youtube.com/watch?v=xMaE6toi4mk&list=RDxMaE6toi4mk&start_radio=1&pp=ygUmVGhlIENsYXNoIFNob3VsZCBJIFN0YXkgb3IgU2hvdWxkIEkgR2-gBwE%3D';
+  const songs = [
+    'https://m.youtube.com/watch?v=xMaE6toi4mk',
+    'https://youtu.be/j5rGm3kdTuk'
+  ];
+  const url = songs[Math.floor(Math.random() * songs.length)];
   window.open(url, '_blank');
 }
 
