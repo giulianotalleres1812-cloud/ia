@@ -515,25 +515,25 @@ function speak(text) {
 let lastSong = -1;
 
 function playMusic() {
+  // Primero apagamos todo
+  listening = false;
+  cancelAnimationFrame(animFrame);
   if (micStream) {
     micStream.getTracks().forEach(track => track.stop());
   }
   if (audioCtx) {
     audioCtx.close();
   }
-  listening = false;
+  analyser = null;
 
   const songs = [
-    'https://m.youtube.com/watch?v=xMaE6toi4mk',
-    'https://youtu.be/j5rGm3kdTuk'
+    'https://youtu.be/j5rGm3kdTuk',
+    'https://m.youtube.com/watch?v=xMaE6toi4mk'
   ];
-  
-  let lastSong = parseInt(localStorage.getItem('lastSong') ?? '-1');
+
   lastSong = (lastSong + 1) % songs.length;
-  localStorage.setItem('lastSong', lastSong);
-  
-  window.location.href = songs[lastSong];
-}
+  window.open(songs[lastSong], '_blank');
+  }
 
 function hideMsg() {
   document.getElementById('msgOverlay').classList.remove('show');
