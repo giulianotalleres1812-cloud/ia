@@ -529,7 +529,7 @@ function playMusic() {
   ];
   lastSong = (lastSong + 1) % songs.length;
   const url = songs[lastSong];
-  window.open(url, '_blank');
+  window.location.href = url;
 }
 
 function hideMsg() {
